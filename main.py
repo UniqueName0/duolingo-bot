@@ -27,8 +27,9 @@ driver = webdriver.Chrome(service=s, desired_capabilities=caps, options=options)
 driver.maximize_window()
 
 
-driver.get('https://www.duolingo.com/')
-time.sleep(10)
+driver.get('https://www.duolingo.com/skill/de/Adjectives%3A-Nominative-1/3')
+
+
 while True:
     try:
         if keyboard.is_pressed('q'):
@@ -59,45 +60,65 @@ while True:
             challenges = sBody["challenges"]
             for i in range(len(challenges)):
                 try:
+                    if challenges[i]["challengeGeneratorIdentifier"]["specificType"] == "speak":
+                        print("speaking problem, skipping")
+                        mouse.position = (284, 659)
+                        time.sleep(.5)
+                        mouse.click(Button.left)
+                        for q in range(2):
+                            keyboard1.type("\n")
+                            time.sleep(1.5)
+                        time.sleep(1)
+                        raise KeyError
                     print(challenges[i]["correctSolutions"])
                     keyboard1.type(challenges[i]["correctSolutions"][0])
                     time.sleep(1)
-                    for q in range(3):
+                    for q in range(2):
                         keyboard1.type("\n")
                         time.sleep(1)
+                    time.sleep(1)
                 except KeyError:
                     try:
                         print(challenges[i]["correctIndex"])
                         keyboard1.type(str(challenges[i]["correctIndex"]+1))
                         time.sleep(1)
-                        for q in range(3):
+                        for q in range(2):
                             keyboard1.type("\n")
                             time.sleep(1)
+                        time.sleep(1)
                     except KeyError:
                         try:
                             print(challenges[i]["correctIndices"])
+                            if challenges[i]["correctIndices"][0] == 0 and challenges[i]["correctIndices"][1] == 1:
+                                raise KeyError
                             keyboard1.type(str(challenges[i]["correctIndices"][0] + 1))
                             time.sleep(1)
-                            for q in range(3):
+                            for q in range(2):
                                 keyboard1.type("\n")
                                 time.sleep(1)
-                        except:
+                            time.sleep(1)
+                        except KeyError:
                             try:
                                 print(challenges[i]["correctTokens"])
+                                if challenges[i]["correctTokens"][0] == 0 and challenges[i]["correctIndices"][1] == 1:
+                                    raise KeyError
                                 for token in challenges[i]["correctTokens"]:
                                     keyboard1.type(token + " ")
                                 time.sleep(1)
-                                for q in range(3):
+                                for q in range(2):
                                     keyboard1.type("\n")
                                     time.sleep(1)
-                            except:
-                                print('sus')
-                                keyboard1.type("1")
                                 time.sleep(1)
-                                for q in range(3):
+                            except KeyError:
+                                print("couldn't read answer, skipping")
+                                mouse.position = (284, 659)
+                                time.sleep(.5)
+                                mouse.click(Button.left)
+                                for q in range(2):
                                     keyboard1.type("\n")
                                     time.sleep(1)
-        break
+                                time.sleep(1)
+            break
     except Exception as e:
         print(e)
         break
