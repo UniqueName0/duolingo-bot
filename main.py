@@ -52,7 +52,7 @@ while True:
             with open("sessions.json", "w") as outfile:
                 outfile.write(json.dumps(sessions))
 
-            mouse.position = (713, 494)
+            mouse.position = (713, 494) # position of text box
             time.sleep(0.5)
             mouse.click(Button.left)
 
@@ -62,7 +62,7 @@ while True:
                 try:
                     if challenges[i]["challengeGeneratorIdentifier"]["specificType"] == "speak":
                         print("speaking problem, skipping")
-                        mouse.position = (284, 659)
+                        mouse.position = (284, 659) # position of skip button
                         time.sleep(.5)
                         mouse.click(Button.left)
                         for q in range(2):
@@ -111,7 +111,7 @@ while True:
                                 time.sleep(1)
                             except KeyError:
                                 print("couldn't read answer, skipping")
-                                mouse.position = (284, 659)
+                                mouse.position = (284, 659) # position of skip button
                                 time.sleep(.5)
                                 mouse.click(Button.left)
                                 for q in range(2):
