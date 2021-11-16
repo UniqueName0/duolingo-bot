@@ -28,7 +28,7 @@ driver.maximize_window()
 
 
 driver.get('https://www.duolingo.com/')
-
+time.sleep(10)
 while True:
     try:
         if keyboard.is_pressed('q'):
@@ -76,14 +76,28 @@ while True:
                     except KeyError:
                         try:
                             print(challenges[i]["correctIndices"])
-                            keyboard1.type(str(challenges[i]["correctIndices"]+1))
+                            keyboard1.type(str(challenges[i]["correctIndices"][0] + 1))
                             time.sleep(1)
                             for q in range(3):
                                 keyboard1.type("\n")
                                 time.sleep(1)
                         except:
-                            print('sus')
-            break
+                            try:
+                                print(challenges[i]["correctTokens"])
+                                for token in challenges[i]["correctTokens"]:
+                                    keyboard1.type(token + " ")
+                                time.sleep(1)
+                                for q in range(3):
+                                    keyboard1.type("\n")
+                                    time.sleep(1)
+                            except:
+                                print('sus')
+                                keyboard1.type("1")
+                                time.sleep(1)
+                                for q in range(3):
+                                    keyboard1.type("\n")
+                                    time.sleep(1)
+        break
     except Exception as e:
         print(e)
         break
