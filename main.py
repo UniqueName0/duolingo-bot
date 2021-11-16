@@ -16,14 +16,14 @@ caps = DesiredCapabilities.CHROME
 caps['goog:loggingPrefs'] = {'performance': 'ALL'}
 
 
-#options = webdriver.ChromeOptions()
+options = webdriver.ChromeOptions()
 #options.add_argument(r"--user-data-dir=C:\Users\YOUR USER\AppData\Local\Google\Chrome\User Data")
 #options.add_argument(r'--profile-directory=Profile 2')
 #    ^used for logging into a specific chrome profile^
 
 
 s=Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=s, desired_capabilities=caps, options=options)
+driver = webdriver.Chrome(service=s, desired_capabilities=caps, options=options)  # add options=options if logging into a specific chrome profile
 driver.maximize_window()
 
 
