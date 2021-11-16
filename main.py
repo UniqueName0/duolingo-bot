@@ -23,7 +23,7 @@ options = webdriver.ChromeOptions()
 
 
 s=Service(ChromeDriverManager().install())
-driver = webdriver.Chrome(service=s, desired_capabilities=caps, options=options)  # add options=options if logging into a specific chrome profile
+driver = webdriver.Chrome(service=s, desired_capabilities=caps, options=options)
 driver.maximize_window()
 
 
