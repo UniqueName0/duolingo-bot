@@ -1,6 +1,8 @@
 A bot for duolingo<br>
 uses selenium webdriver to get the answers from network requests and pynput to enter the answers
 
+can't do matching pairs problems
+
 usage:
     run the script, it will open a browser<br>
     start the duolingo lesson you want it doing<br>

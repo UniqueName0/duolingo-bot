@@ -29,7 +29,7 @@ driver.maximize_window()
 
 driver.get('https://www.duolingo.com/')
 
-while True:  # making a loop
+while True:
     try:
         if keyboard.is_pressed('q'):
             logs_raw = driver.get_log("performance")
