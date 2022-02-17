@@ -29,7 +29,7 @@ driver = webdriver.Chrome(service=s, desired_capabilities=caps, options=options)
 driver.maximize_window()
 
 
-driver.get('https://www.duolingo.com/skill/de/')
+driver.get('https://www.duolingo.com/')
 
 
 skipPos = (284, 659)
